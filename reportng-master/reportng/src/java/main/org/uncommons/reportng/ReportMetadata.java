@@ -173,6 +173,9 @@ public final class ReportMetadata
                              System.getProperty("os.version"),
                              System.getProperty("os.arch"));
     }
+    public String getDeviceUdid(){
+        return "Run on device: "+System.getProperty("device1Udid");
+    }
 
 
     /**
