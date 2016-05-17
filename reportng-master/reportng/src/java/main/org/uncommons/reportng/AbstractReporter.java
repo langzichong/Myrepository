@@ -50,7 +50,7 @@ public abstract class AbstractReporter implements IReporter
     private static final ResourceBundle MESSAGES = ResourceBundle.getBundle("org.uncommons.reportng.messages.reportng",
                                                                             META.getLocale());
 
-    private final String classpathPrefix;
+    public final String classpathPrefix;
 
 
     /**

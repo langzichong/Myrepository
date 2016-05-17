@@ -16,9 +16,7 @@
 
 package org.uncommons.reportng;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -296,6 +294,15 @@ public class HTMLReporter extends AbstractReporter
     {
         copyClasspathResource(outputDirectory, "reportng.css", "reportng.css");
         copyClasspathResource(outputDirectory, "reportng.js", "reportng.js");
+        copyClasspathResource(outputDirectory, "jquery.fancybox.js", "jquery.fancybox.js");
+        copyClasspathResource(outputDirectory, "fancybox.css", "fancybox.css");
+        copyImage(outputDirectory, "blank.gif", "blank.gif");
+        copyImage(outputDirectory, "fancybox-x.png", "fancybox-x.png");
+        copyImage(outputDirectory, "fancybox-y.png", "fancybox-y.png");
+        copyImage(outputDirectory, "fancy_close.png", "fancy_close.png");
+        copyImage(outputDirectory, "fancy_nav_left.png", "fancy_nav_left.png");
+        copyImage(outputDirectory, "fancy_nav_right.png", "fancy_nav_right.png");
+        copyImage(outputDirectory, "fancybox.png", "fancybox.png");
         // If there is a custom stylesheet, copy that.
         File customStylesheet = META.getStylesheetPath();
 
@@ -317,4 +324,35 @@ public class HTMLReporter extends AbstractReporter
             }
         }
     }
+    /**
+     * Helper method to copy the contents of a stream to a file.
+     * @param outputDirectory The directory in which the new file is created.
+     * @param targetFileName The file to write the stream contents to.
+     * @throws IOException If the stream cannot be copied.
+     */
+    protected void copyImage(File outputDirectory,
+                             String resourceName,
+                             String targetFileName) throws IOException
+    {
+        String resourcePath = classpathPrefix + resourceName;
+
+        InputStream resourceStream = getClass().getClassLoader().getResourceAsStream(resourcePath);
+        File dst = new File(outputDirectory, targetFileName);
+        try
+        {
+            OutputStream out = new FileOutputStream(dst);
+
+            // Transfer bytes from in to out
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = resourceStream.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            resourceStream.close();
+            out.close();
+        } catch (Exception ex ){
+            ex.printStackTrace();
+        }
+    }
+
 }
