@@ -7,7 +7,7 @@
   <name>ReportNG</name>
   <groupId>org.uncommons</groupId>
   <artifactId>reportng</artifactId>
-  <version>@VERSION@</version>
+  <version>1.1.5</version>
   <packaging>jar</packaging>
   <url>https://reportng.dev.java.net/</url>
 
@@ -18,12 +18,37 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>dins-public</id>
+      <name>Dins Corporate Repository</name>
+      <url>http://10.32.52.100:8888/nexus/content/groups/public</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <distributionManagement>
+  <repository>
+    <uniqueVersion>false</uniqueVersion>
+    <id>releases</id>
+    <name>Dins Releases Repository</name>
+    <url>http://10.32.52.100:8888/nexus/content/repositories/releases</url>
+    <layout>default</layout>
+  </repository>
+  <snapshotRepository>
+    <uniqueVersion>true</uniqueVersion>
+    <id>dins-snapshots</id>
+    <name>Dins Snapshots Repository</name>
+    <url>http://10.32.52.100:8888/nexus/content/repositories/snapshots</url>
+    <layout>default</layout>
+  </snapshotRepository>
+  </distributionManagement>
+
   <dependencies>
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>[5.0,)</version>
+      <version>6.9.9</version>
     </dependency>
     <dependency>
       <groupId>velocity</groupId>

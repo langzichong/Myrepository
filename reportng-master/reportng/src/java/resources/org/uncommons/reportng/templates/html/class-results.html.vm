@@ -42,7 +42,7 @@
     #end
 
     ## Show logger output for the test.
-    #set ($output = $utils.allOutput)
+    #set ($output = $utils.getTestOutput($testResult))
     #if ($output.size() > 0)
     <div class="testOutput" id="tests-${testResult.name}${velocityCount}" style="display: none;">
       #foreach( $line in $output )
