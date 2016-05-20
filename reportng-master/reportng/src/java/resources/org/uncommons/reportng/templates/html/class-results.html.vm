@@ -45,6 +45,7 @@
     #set ($output = $utils.getTestOutput($testResult))
     #if ($output.size() > 0)
     <div class="testOutput" id="tests-${testResult.name}${velocityCount}" style="display: none;">
+      $testResult.method.description<br>
       #foreach( $line in $output )
         #if ($meta.shouldEscapeOutput())
           $utils.escapeHTMLString($line)<br />

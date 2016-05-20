@@ -7,7 +7,7 @@
   <name>ReportNG</name>
   <groupId>org.uncommons</groupId>
   <artifactId>reportng</artifactId>
-  <version>1.1.5</version>
+  <version>1.1.5-SNAPSHOT</version>
   <packaging>jar</packaging>
   <url>https://reportng.dev.java.net/</url>
 
@@ -56,5 +56,24 @@
       <version>1.4</version>
     </dependency>
   </dependencies>
+  <build>
+    <sourceDirectory>src/java/main</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>${basedir}/src/java/resources</directory>
+      </resource>
+    </resources>
+  <plugins>
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.1</version>
+    <configuration>
+      <source>1.8</source>
+      <target>1.8</target>
+    </configuration>
+  </plugin>
+  </plugins>
+  </build>
   
 </project>
