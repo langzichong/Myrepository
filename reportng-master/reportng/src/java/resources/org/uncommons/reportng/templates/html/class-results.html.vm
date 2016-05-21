@@ -11,9 +11,9 @@
       #set ($testInstanceName = " ($testResult.testName)")
     #end
     #if ($testResult.method.description && $testResult.method.description.length() > 0)
-      <span class="description" id="toggle-${testResult.name}${velocityCount}" title="${testResult.method.description}">&#x25bc;</span>$testResult.name$testInstanceName
+      <span class="description" id="toggle-${testResult.name}${velocityCount}" title="${testResult.method.description}">&#x25b6;</span>$testResult.name$testInstanceName
     #else
-        <span class="description" id="toggle-${testResult.name}${velocityCount}" title="${testResult.method.description}">&#x25bc;</span>$testResult.name$testInstanceName
+        <span class="description" id="toggle-${testResult.name}${velocityCount}" title="${testResult.method.description}">&#x25b6;</span>$testResult.name$testInstanceName
     #end
   </td>
   <td class="duration">
@@ -44,8 +44,8 @@
     ## Show logger output for the test.
     #set ($output = $utils.getTestOutput($testResult))
     #if ($output.size() > 0)
+    $utils.caseDesc($testResult.method.description)
     <div class="testOutput" id="tests-${testResult.name}${velocityCount}" style="display: none;">
-      $testResult.method.description<br>
       #foreach( $line in $output )
         #if ($meta.shouldEscapeOutput())
           $utils.escapeHTMLString($line)<br />

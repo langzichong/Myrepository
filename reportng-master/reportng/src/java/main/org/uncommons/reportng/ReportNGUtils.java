@@ -25,6 +25,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.testng.IInvokedMethod;
 import org.testng.ISuite;
 import org.testng.ISuiteResult;
@@ -443,5 +446,27 @@ public class ReportNGUtils
     public String formatPercentage(int numerator, int denominator)
     {
         return PERCENTAGE_FORMAT.format(numerator / (double) denominator);
+    }
+
+    public static String caseDesc(String desc){
+        String testLinkId = getTestLinkID(desc);
+        String testLink="http://testlink.dins.ru/linkto.php?tprojectPrefix=GL&item=testcase&id="+testLinkId;
+        String descAfter = desc.substring(desc.indexOf(testLinkId)+testLinkId.length());
+        if(testLinkId.isEmpty()){
+            return "<h4 class=\"group\">"+desc+"</h4>";
+        }else{
+            return "<h4 class=\"group\"> <a href=\""+testLink+"\" target=\"view_window\" title=\"Open "+testLinkId+" in TestLink\">"+testLinkId+"</a>"+descAfter+"</h4>";
+        }
+    }
+
+    private static String getTestLinkID(String str)
+    {
+        Pattern pattern = Pattern.compile("(GL-\\d+)");
+        Matcher isNum = pattern.matcher(str);
+        if( isNum.find() )
+        {
+            return isNum.group(1);
+        }
+        return "";
     }
 }
