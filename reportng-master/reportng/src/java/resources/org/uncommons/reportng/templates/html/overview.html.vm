@@ -17,7 +17,6 @@
   $messages.getString("generatedBy")
   $messages.getString("atTime") $meta.reportTime $messages.getString("onDate") $meta.reportDate
   <br /><span id="systemInfo">$meta.user&nbsp;/&nbsp;$meta.javaInfo&nbsp;/&nbsp;$meta.platform;/&nbsp;$meta.deviceUdid</span>
-  $messages.getString("project") $meta.project
 </div>
 
 <h1>$meta.reportTitle</h1>

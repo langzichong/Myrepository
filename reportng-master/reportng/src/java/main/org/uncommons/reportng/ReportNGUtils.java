@@ -449,6 +449,9 @@ public class ReportNGUtils
     }
 
     public static String caseDesc(String desc){
+        if(desc==null){
+            return "";
+        }
         String testLinkId = getTestLinkID(desc);
         String testLink="http://testlink.dins.ru/linkto.php?tprojectPrefix=GL&item=testcase&id="+testLinkId;
         String descAfter = desc.substring(desc.indexOf(testLinkId)+testLinkId.length());
