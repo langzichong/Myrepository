@@ -1,7 +1,7 @@
 ReportNG (http://reportng.uncommons.org)
 Copyright 2006-2013 Daniel W. Dyer (http://www.dandyer.co.uk)
 
-Acknowledgements:
+Acknowledgements   :
 -----------------
 ReportNG depends on the Apache Velocity templating engine.  Velocity is also
 licensed under the terms of the Apache Licence Version 2.0.  The NOTICE file
